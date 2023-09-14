@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <h1 class="title"><center>LOG IN</center></h1>
+
+                <center><form method="post" action=".">
+                    {% csrf_token %}
+
+                    <h4>{{form.username.label}}</h4>
+                    {{form.username}}
+                    <br><br>
+                    <h4>{{form.password.label}}</h4>
+                    {{form.password}}
+                    <br><br>
+
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-dark">Log in</button>
+                        </div>
+                    </div>
+                </form></center>
+            </div>
+        </div>
+    </div>
+{% endblock %}

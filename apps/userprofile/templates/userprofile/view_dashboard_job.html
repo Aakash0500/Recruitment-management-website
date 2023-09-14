@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <center><form class="flo1"><h1 class="title">View job - {{ job.title }}</h1>
+
+    <a href="{% url 'edit_job' job.id %}" class="button is-dark mb-4">Edit</a>
+
+    <p class="is-size-5"><b>SHORT-DESCRIPTION: </b>{{ job.short_description }}</p>
+
+    <p><b>LONG-DESCRIPTION: </b>{{ job.long_description }}</p>
+    <br>
+
+    <b>Company name: </b>{{ job.company_name}}<br>
+    <b>Company address: </b>{{ job.company_address}}<br>
+    <b>Company country: </b>{{ job.company_zipcode}}<br>
+    <b>Company experience: </b>{{ job.company_place}}<br>
+    <b>Company package: </b>{{ job.company_country}}<br>
+    <b>Company size: </b>{{ job.get_company_size_display }}<br></form><br>
+
+
+    <form class="flo2"><p class="is-size-5"><b> APPLIED-CANDIDATES </b></p>
+    {% for application in job.applications.all %}
+        
+        <br>
+        <a href="{% url 'view_application' application.id %}"><strong>CANDIDATE:</strong> {{ application.created_by.username }}<br></a>
+    {% endfor %}</form>
+{% endblock %}

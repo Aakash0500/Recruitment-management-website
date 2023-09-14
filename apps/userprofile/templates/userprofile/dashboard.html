@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <center><h1 class="title">Dashboard</h1>
+        <hr>
+
+    {% if userprofile.is_employer %}
+        
+
+        <a href="{% url 'add_job' %}" class="button is-dark">Add job</a>
+        <br><br>
+        
+        <h2 class="subtitle">JOBS</h2>
+        {% for job in request.user.jobs.all %}
+            <form class="dash"><div class="job">
+                <a href="{% url 'view_dashboard_job' job.id %}">JOB-DETAIL: {{ job.title }}<br>STATUS: ({{ job.get_status_display }})</a>
+            </div></form><br>
+        {% empty %}
+        <form class="dash"><div class="job">
+            <p>You don't have any jobs yet...</p>
+        </div></form>
+        {% endfor %}
+    {% else %}
+        <h2 class="subtitle">Applied jobs</h2>
+
+        {% for application in request.user.applications.all %}
+            <form class="dash"><div class="application">
+                <a href="{% url 'view_application' application.id %}">JOB-TITLE: {{ application.job.title }}</a>
+            </div></form><br>
+        {% empty %}
+            <p>You haven't applied for any jobs yet...</p></center>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

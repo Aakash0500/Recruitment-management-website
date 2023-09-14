@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <h1 class="title"><center>SIGN UP</center></h1>
+
+                <center><form method="post" action=".">
+                    {% csrf_token %}
+
+                    <h4>{{form.username.label}}</h4>
+                    {{form.username}}
+                    <br><br>
+                    <h4>{{form.password1.label}}</h4>
+                    {{form.password1}}
+                    <br><br>
+                    <h4>{{form.password2.label}}</h4>
+                    {{form.password2}}
+
+                    <hr>
+
+                    <div class="field">
+                        <label>Account type</label>
+
+                        <div class="control">
+                            <div class="select">
+                                <select name="account_type">
+                                    <option value="jobseeker" selected>Job seeker</option>
+                                    <option value="employer">Employer</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-dark">Sign up</button>
+                        </div>
+                    </div>
+                </form></center>
+            </div>
+        </div>
+    </div>
+{% endblock %}

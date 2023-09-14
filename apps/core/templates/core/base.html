@@ -1,0 +1,173 @@
+ <!DOCTYPE html> 
+
+ <html> 
+
+ <head> 
+
+ <!-- Meta --> 
+
+ <meta charset="utf-8"> 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+ <!-- Title --> 
+
+ <title>Coding Jobs</title> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> 
+
+  <style> 
+
+  nav{ 
+
+  background-image: linear-gradient(to right, #f7f8f2, #f8f89e); 
+
+  } 
+
+  a{ 
+
+  color: black; 
+
+  } 
+
+   a.a{ 
+
+   font-family: sans-serif; 
+
+   } 
+
+   .card { 
+
+   background-image: linear-gradient(to right, #f7f8f2, #f8f89e); 
+
+   } 
+
+form { 
+
+ border : 1px solid #000; 
+
+ padding : 25px; 
+
+ background-image: linear-gradient(to right, #f7f8f2, #f8f89e); 
+
+} 
+
+ .field{ 
+
+ width: 60%; 
+
+ } 
+
+ .dash{ 
+
+ width: 40%; 
+
+ } 
+
+ .flo1{ 
+
+ width: 40%; 
+
+ float:left; 
+
+ } 
+
+ .flo2{ 
+
+ width: 40%; 
+
+ float:right; 
+
+ } 
+
+.image{ 
+
+width: 400px; 
+
+height: 300px; 
+
+object-fit: fill; 
+
+ } 
+
+ </style> 
+
+ </head> 
+
+<body> 
+
+<!-- Navbar --> 
+
+<nav class = "navbar"> 
+
+<div class="navbar-brand"> 
+
+<a href="{% url 'frontpage' %}" class="navbar-item"><strong>HIRE-NOW</strong></a> 
+
+</div> 
+
+<div class="navbar-menu"> 
+
+<div class="navbar-end"> 
+
+<a href="{% url 'search' %}" class="navbar-item">Search</a> 
+
+{% if request.user.is_authenticated %} 
+
+<a href="{% url 'dashboard' %}" class="navbar-item">Dashboard</a> 
+
+ <a href="{% url 'notifications' %}" class="navbar-item">Notifications ({{ notifications.count }})</a>     
+
+{% endif %} 
+
+ <div class="navbar-item"> 
+
+ <div class="buttons"> 
+
+{% if request.user.is_authenticated %} 
+
+<a href="{% url 'logout' %}" class="button is-danger is-outlined">Log out</a> 
+
+{% else %} 
+
+<a href="{% url 'signup' %}" class="button is-success is-outlined"><strong>Sign up</strong></a> 
+
+<a href="{% url 'login' %}" class="button is-primary is-outlined">Log in</a>     
+
+{% endif %} 
+
+</div> 
+
+</div> 
+
+</div> 
+
+</div> 
+
+</nav> 
+
+<!-- End Navbar -->  
+
+<!-- Main content --> 
+
+<section class="section"> 
+
+{% block content %} 
+
+{% endblock %} 
+
+</section> 
+
+ <!-- End Main content -->  
+
+ <!-- Scripts --> 
+
+ <script src="https://unpkg.com/vue@next"></script> 
+
+{% block scripts %} 
+
+{% endblock %} 
+
+</body> 
+
+</html> 
